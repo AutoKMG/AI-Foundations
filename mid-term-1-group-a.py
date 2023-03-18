@@ -8,7 +8,7 @@ class Fruits(Problem):
         # Complete the implementation of initial function by calling
         # the parent constructor and initialize with the initial state
         # Write your code below this line!
-        pass
+        super().__init__((13, 46, 59))
         # Write your code above this line! Delete the 'pass' keyword!
 
     def actions(self, state):
@@ -16,7 +16,11 @@ class Fruits(Problem):
         # The function should return all next possible actions from the input state.
         acts = []
         # Write your code below this line!
-
+        for i in range(len(state)):
+            for j in range(len(state)):
+                if i !=j and state[i] > 0 and state[j] > 0:
+                    action = (i+1, j+1)
+                    acts.append(action)
         # Write your code above this line!
         return acts
 

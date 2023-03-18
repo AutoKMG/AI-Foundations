@@ -1,4 +1,3 @@
-from utils import *
 from search import *
 
 
@@ -19,7 +18,7 @@ class Fruits(Problem):
         for i in range(len(state)):
             for j in range(len(state)):
                 if i != j and state[i] > 0 and state[j] > 0:
-                    action = (i+1, j+1)
+                    action = (i + 1, j + 1)
                     acts.append(action)
         # Write your code above this line!
         return acts
@@ -28,7 +27,7 @@ class Fruits(Problem):
         # Fill in the missing parts of the transition function. Return the new state as the result.
         i, j = action
         # Write your code below this line!
-        new_list = list(state) # Making a list version of our tuple to be able to modify it
+        new_list = list(state)  # Making a list version of our tuple to be able to modify it
         i -= 1
         j -= 1
         for k in range(len(new_list)):
@@ -58,7 +57,6 @@ def depth_first_graph_search(problem):
 
 
 def main():
-
     # 1. Exercise: Fill in the missing parts of init function and print out the initial state result (1 point)
     # Write your code below this line!
     trader = Fruits()

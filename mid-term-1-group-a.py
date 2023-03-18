@@ -61,23 +61,25 @@ def main():
 
     # 1. Exercise: Fill in the missing parts of init function and print out the initial state result (1 point)
     # Write your code below this line!
-    pass
+    trader = Fruits()
+    print(trader.initial)
     # Write your code above this line! Delete the 'pass' keyword.
 
     # 2. Exercise: Fill out the goal_test function and test if it works correctly (1 point)
     # (test for (49, 0, 0) and (5, 6, 6))
     # Write your code below this line!
-
+    print(trader.goal_test((49, 0, 0)))
+    print(trader.goal_test((5, 6, 6)))
     # Write your code above this line!
     # 3. Exercise: Fill out the actions function and test if it works correctly (3 points)
     # (test using the initial state)
     # Write your code below this line!
-
+    print(trader.actions(trader.initial))
     # Write your code above this line!
     # 4. Exercise: Fill out the result function and test if it works correctly (2 points)
     # (use the initial state and (2, 3) as the action when testing)
     # Write your code below this line!
-
+    print(trader.result(trader.initial, (2, 3)))
     # Write your code above this line!
     # 5. Fill out the depth_first_graph_search function and solve the problem using it (2 points)
     # Write your code below this line!

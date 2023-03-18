@@ -42,7 +42,11 @@ class Fruits(Problem):
     def goal_test(self, state):
         # Write a logic here to test if the state is a goal state. Return True if it is a goal state, False if not
         # Write your code below this line!
-        pass
+        for i in range(len(state)):
+            for j in range(len(state)):
+                if i != j and state[i] + state[j] == 0:
+                    return True
+        return False
         # Write your code above this line! Delete the 'pass' keyword.
 
 

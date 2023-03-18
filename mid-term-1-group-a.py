@@ -31,7 +31,7 @@ class Fruits(Problem):
         i -= 1
         j -= 1
         for k in range(len(new_list)):
-            if (k == j or k == i) and state[i] > 0 and state[j] > 0:
+            if (k == j or k == i) and state[k] > 0:
                 new_list[k] -= 1
             else:
                 new_list[k] += 2

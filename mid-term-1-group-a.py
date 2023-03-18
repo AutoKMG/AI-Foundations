@@ -52,7 +52,17 @@ class Fruits(Problem):
 def depth_first_graph_search(problem):
     # Fill out the function to perform a Depth first graph search on a given problem
     # Write your code below this line!
-    pass
+    frontier = [Node(problem.initial)]  # Stack First in First Out: FIFO
+    explored = set()  # A set of the explored nodes to not get into it again
+    while frontier:
+        node = frontier.pop()
+        if problem.goal_test(node.state):
+            return node
+        explored.add(node.state)
+        frontier.extend(child for child in node.expand(problem)
+                        if child.state not in explored and child not in explored)
+
+    return None
     # Write your code above this line! Delete the 'pass' keyword.
 
 
@@ -81,7 +91,7 @@ def main():
     # Write your code above this line!
     # 5. Fill out the depth_first_graph_search function and solve the problem using it (2 points)
     # Write your code below this line!
-
+    print(depth_first_graph_search(trader))
     # Write your code above this line!
 
 

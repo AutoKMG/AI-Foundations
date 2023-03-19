@@ -1,6 +1,12 @@
 from search import Problem, Trial_Error
 
 
+def convert_state_to_list(state):
+    return [list(x) for x in state]
+
+
+def covert_list_to_state(state):
+    return tuple([tuple(x) for x in state])
 class FourQueensProblem(Problem):
     def __init__(self):
         # Fill out the __init__ call with only the initial state of the problem (in tuple of tuples format)

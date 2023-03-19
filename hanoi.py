@@ -9,7 +9,13 @@ class Hanoi(Problem):
 
     def actions(self, state):
         acts = []
-
+        inf_set = {math.inf}
+        for i in range(3):
+            for j in range(3):
+                if i != j:
+                    for k in range(1, 4):
+                        if k == min(state[i].union(inf_set)) and k < min(state[j].union(inf_set)):
+                            acts.append(f"o {i + 1} {j + 1} {k}")
         # Calculate possible actions here
 
         return acts

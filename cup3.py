@@ -1,4 +1,4 @@
-from search import Problem, Trial_Error
+from search import *
 
 
 class Cup3(Problem):
@@ -20,7 +20,7 @@ class Cup3(Problem):
         for i in range(3):
             for j in range(3):
                 if i != j and state[i] > 0:
-                    acts.append(f"o {i+1} {j+1}")
+                    acts.append(f"o {i + 1} {j + 1}")
         return acts
 
     def result(self, state, action):
@@ -36,6 +36,19 @@ class Cup3(Problem):
         return tuple(new_state)
 
 
+def depth_first_graph_search(problem):
+    frontier = [Node(problem.initial)]
+    explored = set()
+    while frontier:
+        node = frontier.pop()
+        if node.state in problem.goal:
+            return node
+        explored.add(node.state)
+        frontier.extend(child for child in node.expand(problem)
+                        if child.state not in explored and child not in frontier)
+    return None
+
+
 def main():
     c = Cup3()
     print(c.initial)
@@ -46,6 +59,7 @@ def main():
     print(c.actions(c.initial))
     print(c.actions((2, 2, 1)))
     print(c.result((2, 2, 1), "o 1 3"))
+    print(depth_first_graph_search(c))
     # print(Trial_Error(c))
 
 

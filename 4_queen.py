@@ -33,19 +33,20 @@ class FourQueensProblem(Problem):
             for j in range(4):
                 if state[i][j] == 0:
                     acts.append(f"o {i+1} {j+1}")
+        return acts
 
     def result(self, state, action):
         # Return with the new state of the result of the action parameter used in the state parameter.
         # Tip: don't forget to convert state to list of lists and then convert the result back to tuple of tuples
-        i = int(action.split(' ')[1])
-        j = int(action.split(' ')[2])
+        i = int(action.split(' ')[1]) - 1
+        j = int(action.split(' ')[2]) - 1
         new_state = convert_state_to_list(state)
         for r in range(4):
             for c in range(4):
                 if r == i and c == j:
                     new_state[i][j] = 1
-                elif (r == i or c == j or abs(i - r) == abs (j - c)) and not (r == i and c == j):
-                    new_state[i][j] = 2
+                elif (r == i or c == j or abs(i - r) == abs(j - c)) and not (r == i and c == j):
+                    new_state[r][c] = 2
         return convert_list_to_state(new_state)
 
     def goal_test(self, state):
@@ -61,7 +62,28 @@ class FourQueensProblem(Problem):
 def main():
     # Test every method that you created: actions, result, goal_test.
     # Also try to solve the problem using the Trial_Error method (found in the search library)
-    pass
+    f_queen = FourQueensProblem()
+
+    my_state = ((0, 0, 0, 0),
+                (0, 0, 0, 0),
+                (0, 0, 0, 0),
+                (0, 0, 0, 0))
+
+    print(len(f_queen.actions(my_state)))
+
+    print_matrix(f_queen.result(my_state, "o 4 4"))
+
+    my_goal_state = ((0, 1, 0, 0),
+                     (0, 0, 0, 1),
+                     (1, 0, 0, 0),
+                     (0, 0, 1, 0))
+    print()
+    print_matrix(my_goal_state)
+    print(f_queen.goal_test(my_goal_state))
+
+    print()
+    print("Trying to solve with Trial Error method")
+    print(Trial_Error(f_queen))
 
 
 main()

@@ -27,8 +27,13 @@ class Cup3(Problem):
         """Return the state that results from executing the given
         action in the given state. Assume that the action is one of
         self.actions(state)."""
-
-        pass
+        from_cup = int(action.split(' ')[1])
+        to_cup = int(action.split(' ')[2])
+        value = min(state[from_cup - 1], max(self.H[to_cup - 1]) - state[to_cup - 1])
+        new_state = list(state)
+        new_state[from_cup - 1] -= value
+        new_state[to_cup - 1] += value
+        return tuple(new_state)
 
 
 def main():
@@ -40,6 +45,7 @@ def main():
     print(c.H)
     print(c.actions(c.initial))
     print(c.actions((2, 2, 1)))
+    print(c.result((2, 2, 1), "o 1 3"))
     # print(Trial_Error(c))
 
 

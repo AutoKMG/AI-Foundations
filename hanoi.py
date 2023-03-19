@@ -1,5 +1,5 @@
 import math
-from search import Problem
+from search import *
 
 
 class Hanoi(Problem):
@@ -28,11 +28,21 @@ class Hanoi(Problem):
 
         for l in range(1, 4):
             if l == j:
-                state[l-1] = state[l-1].union({k})
+                state[l - 1] = state[l - 1].union({k})
             else:
                 state[l - 1] = state[l - 1].difference({k})
         # calculate and return new state here
         return state
+
+
+def depth_first_tree_search(problem):
+    frontier = [Node(problem.initial)]
+    while frontier:
+        node = frontier.pop()
+        if problem.goal_test(node.state):
+            return node.state
+        frontier.extend(child for child in node.expand(problem))
+    return None
 
 
 def main():
@@ -47,6 +57,6 @@ def main():
         state=[{1}, {2, 3}, set()],
         action="o 2 3 2"
     ))
-
+    print(depth_first_tree_search(h))
 
 main()

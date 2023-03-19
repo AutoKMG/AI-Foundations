@@ -7,6 +7,13 @@ def convert_state_to_list(state):
 
 def convert_list_to_state(state):
     return tuple([tuple(x) for x in state])
+
+
+def print_matrix(state):
+    for i in range(len(state)):
+        print(state[i])
+
+
 class FourQueensProblem(Problem):
     def __init__(self):
         # Fill out the __init__ call with only the initial state of the problem (in tuple of tuples format)

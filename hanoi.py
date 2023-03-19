@@ -22,9 +22,17 @@ class Hanoi(Problem):
 
     def result(self, state, action):
         i, j, k = action.split(' ')[1:]
+        i, j, k = int(i), int(j), int(k)
 
+        new_state = state
+
+        for l in range(1, 4):
+            if l == j:
+                state[l-1] = state[l-1].union({k})
+            else:
+                state[l - 1] = state[l - 1].difference({k})
         # calculate and return new state here
-        pass
+        return state
 
 
 def main():

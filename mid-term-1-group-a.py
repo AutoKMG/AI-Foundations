@@ -60,7 +60,7 @@ def depth_first_graph_search(problem):
             return node
         explored.add(node.state)
         frontier.extend(child for child in node.expand(problem)
-                        if child.state not in explored and child not in explored)
+                        if child.state not in explored and child not in frontier)
 
     return None
     # Write your code above this line! Delete the 'pass' keyword.

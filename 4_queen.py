@@ -15,7 +15,11 @@ class FourQueensProblem(Problem):
     def actions(self, state):
         # Return a list of possible actions in "o i j" format where
         # i is the row (from 1 to 4) and j is the column (from 1 to 4)
-        pass
+        acts = []
+        for i in range(4):
+            for j in range(4):
+                if state[i][j] == 0:
+                    acts.append(f"o {i+1} {j+1}")
 
     def result(self, state, action):
         # Return with the new state of the result of the action parameter used in the state parameter.

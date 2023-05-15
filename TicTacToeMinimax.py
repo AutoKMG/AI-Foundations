@@ -2,6 +2,9 @@ board = {1: ' ', 2: ' ', 3: ' ',
          4: ' ', 5: ' ', 6: ' ',
          7: ' ', 8: ' ', 9: ' '}
 
+player = 'O'
+bot = 'X'
+
 
 def print_board(board):
     print(f"{board[1]} | {board[2]} | {board[3]}\n{board[4]} | {board[5]} | {board[6]}"
@@ -18,6 +21,16 @@ def insert_move(position, letter):
     if is_space_free(position):
         board[position] = letter
         print_board(board)
+        if check_win():
+            if letter == 'X':
+                print("Bot wins!")
+                exit()
+            else:
+                print("Player wins!")
+                exit()
+        if check_draw():
+            print("Draw!")
+            exit()
         return
     else:
         position = int(input("Please enter a valid position: "))

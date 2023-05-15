@@ -14,3 +14,12 @@ def is_space_free(position):
     return False
 
 
+def insert_move(position, letter):
+    if is_space_free(position):
+        board[position] = letter
+        print_board(board)
+        return
+    else:
+        position = int(input("Please enter a valid position: "))
+        insert_move(position)
+        return

@@ -66,8 +66,17 @@ def player_move():
 
 
 def computer_move():
-    position = int(input("Enter a position for 'X': "))
-    insert_move(position, bot)
+    best_score = -800
+    best_move = 0
+    for key in board.keys():
+        if board[key] == ' ':
+            board[key] = bot
+            score = minimax(board, False)  # Going to declare this function later
+            board[key] = ' '
+            if score > best_score:
+                best_score = score
+                best_move = key
+    insert_move(best_move, bot)
     return
 
 

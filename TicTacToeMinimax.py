@@ -59,8 +59,25 @@ def check_win():
         return False
 
 
+def player_move():
+    position = int(input("Enter a position for 'O': "))
+    insert_move(position, player)
+    return
+
+
+def computer_move():
+    position = int(input("Enter a position for 'X': "))
+    insert_move(position, bot)
+    return
+
+
 def check_draw():
     for key in board.keys():
         if board[key] == ' ':
             return False
     return True
+
+
+while not check_win():
+    player_move()
+    computer_move()

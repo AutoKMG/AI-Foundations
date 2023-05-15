@@ -80,6 +80,35 @@ def computer_move():
     return
 
 
+def minimax(board, is_maximizing):
+    if check_which_mark_won(bot):
+        return 1
+    elif check_which_mark_won(player):
+        return -1
+    elif check_draw():
+        return 0
+    if is_maximizing:
+        best_score = -800
+        for key in board.keys():
+            if board[key] == ' ':
+                board[key] = bot
+                score = minimax(board, False)
+                board[key] = ' '
+                if score > best_score:
+                    best_score = score
+        return best_score
+    else:
+        best_score = 800
+        for key in board.keys():
+            if board[key] == ' ':
+                board[key] = player
+                score = minimax(board, True)
+                board[key] = ' '
+                if score < best_score:
+                    best_score = score
+        return best_score
+
+
 def check_draw():
     for key in board.keys():
         if board[key] == ' ':
